@@ -26,7 +26,7 @@ client.once('ready', () => {
     // Vérifier si le canal existe
     if (channel) {
         // Envoyer le message
-        channel.send('Bonjour tout le monde!');
+        //channel.send('Bonjour tout le monde!');
     } else {
         console.log('Le canal spécifié est introuvable.');
     }
@@ -34,7 +34,7 @@ client.once('ready', () => {
 
 client.login(process.env.TOKEN);
 
-const playersByRole = {};
+let playersByRole = {};
 
 
 async function fetchFromAPI() {
@@ -60,15 +60,38 @@ async function fetchFromAPI() {
             console.log(`Rôle : ${role}`);
             console.log(`Joueurs : ${playersByRole2[role].join(', ')}`);
         }
-        if (playersByRole2 == playersByRole) {
-            console.log("Aucun changement");
-        } else {
-            console.log("Changement");
+        for (const role in playersByRole) {
+            // Vérifier si le rôle existe dans playersByRole2
+            if (playersByRole2.hasOwnProperty(role)) {
+                // Vérifier si les listes de joueurs sont identiques
+                if (JSON.stringify(playersByRole[role]) !== JSON.stringify(playersByRole2[role])) {
+                    console.log(`Les listes de joueurs pour le rôle "${role}" sont différentes :`);
+                    console.log(`Joueurs dans playersByRole : ${playersByRole[role].join(', ')}`);
+                    console.log(`Joueurs dans playersByRole2 : ${playersByRole2[role].join(', ')}`);
+
+                    // Afficher les joueurs qui sont dans playersByRole mais pas dans playersByRole2
+                    const missingPlayersInRole2 = playersByRole[role].filter(player => !playersByRole2[role].includes(player));
+                    if (missingPlayersInRole2.length > 0) {
+                        console.log(`Joueurs manquants dans playersByRole2 : ${missingPlayersInRole2.join(', ')}`);
+                    }
+
+                    // Afficher les joueurs qui sont dans playersByRole2 mais pas dans playersByRole
+                    const missingPlayersInRole1 = playersByRole2[role].filter(player => !playersByRole[role].includes(player));
+                    if (missingPlayersInRole1.length > 0) {
+                        console.log(`Joueurs manquants dans playersByRole : ${missingPlayersInRole1.join(', ')}`);
+                    }
+                } else {
+                    console.log("Les listes de joueurs pour le rôle " + role + " sont identiques.");
+                }
+            } else {
+                console.log(`Le rôle "${role}" existe dans playersByRole mais pas dans playersByRole2.`);
+                console.log("Changement");
+            }
         }
+        playersByRole = playersByRole2;
     } catch (error) {
         console.error('Erreur lors de la requête à l\'API :', error);
     }
 }
 
-// Appel de la fonction pour récupérer les données de l'API
-fetchFromAPI();
+setInterval(fetchFromAPI, 1 * 60 * 60)
