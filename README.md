@@ -7,43 +7,39 @@
   <img src="https://img.shields.io/badge/Web Scraping-4B8BBE?style=for-the-badge&logo=beautifulsoup&logoColor=white"/>
 </div>
 
-Un bot Discord qui scrappe la liste du staff Rinaorc (https://tracker.rinaorc.com/), détecte les changements (ajouts, suppressions, changements de grade), met à jour automatiquement un message Discord, et envoie des alertes.
+A Discord bot that scrapes the Rinaorc staff list (https://tracker.rinaorc.com/), detects changes (additions, removals, rank updates), automatically updates a Discord message, and sends alerts.
 
-🚀 Totalement automatisé via **GitHub Actions**.
+🚀 Fully automated via **GitHub Actions**.
 
----
+## 📝 Context
+A few years ago, I used to play on **Rinaorc** and I was manually posting staff changes on Discord (new members, departures, rank updates).
 
-## 📝 Contexte
-Il y a quelques années, je jouais à **Rinaorc** et je faisais à la main les annonces de changements de staff sur Discord (ajouts, départs, changements de grade).  
-
-J'avais envie de faire un peu de Python pour quelque chose de simple, j’ai donc décidé d’automatiser ce process.
+I wanted to code something simple in Python, so I decided to automate this repetitive process.
 
 ---
 
-## ✨ Fonctionnalités
-- Scrapping de la liste de staff depuis **tracker.rinaorc.com**
-- Mise à jour d'un message Discord
-- Alertes détaillées sur les changements (ajouts, suppressions, changements de grade)
-- Full automatisation via **GitHub Actions** (une fois par jour à 16h UTC)
+## ✨ Features
+- Scrapes the staff list from **tracker.rinaorc.com**
+- Automatically updates a Discord message with the current staff
+- Sends detailed alerts when changes are detected (additions, removals, rank updates)
+- Fully automated via **GitHub Actions** (runs once a day at 16:00 UTC)
 
----
-
-## 🛠️ Prérequis
+## 🛠️ Requirements
 - Python 3.10+
-- Un bot Discord configuré sur ton serveur (avec les permissions Envoyer des messages, Lire les messages, etc.)
+- A Discord bot with permissions to send/read messages in the relevant channels
 
 ---
 
-## 📦 Installation locale (Développement)
+## 📦 Local Installation (Development)
 ```bash
 git clone https://github.com/Clarisse78/RinaCommuBot.git
 cd RinaCommuBot
 python -m venv venv
-source venv/bin/activate  # ou venv\Scripts\activate sur Windows
+source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
 
-### Créer un fichier .env à la racine :
+### Create a ``.env`` file at the root: :
 
 ```bash
 DISCORD_TOKEN=<TOKEN_BOT>
@@ -52,6 +48,6 @@ ALERT_CHANNEL_ID=<CHANNEL_ALERT_STAFF>
 ROLE_NOTIF_STAFF_ID=<ROLE_ALERT_NOTIF>
 ```
 
-### ⚙️ Lancer le bot localement
+### ⚙️ Run the bot locally
 
 python bot.py
