@@ -72,7 +72,6 @@ def group_staff_by_grade(staff_data):
 # Save the list of staff in json file
 def save_staff_to_json(staff_data, filename="staff_snapshot.json"):
     snapshot = {
-        "timestamp": datetime.utcnow().isoformat() + "Z",
         "staff": staff_data
     }
     with open(filename, 'w', encoding='utf-8') as f:

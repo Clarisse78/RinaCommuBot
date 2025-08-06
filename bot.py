@@ -103,7 +103,7 @@ def format_alerts(added, removed, grade_changed, old_staff, new_staff):
     msg = f"**Annonce Staff** | <@&{ROLE_NOTIF_STAFF_ID}> :bust_in_silhouette: \n\n"
     if added:
         for name in added:
-            msg += f"``{name}`` passe de N/A à **{old_staff.get(name, 'N/A')}**.\n"
+            msg += f"``{name}`` passe de **N/A** à **{old_staff.get(name, 'N/A')}**.\n"
 
     if removed:
         for name in removed:

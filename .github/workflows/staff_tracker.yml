@@ -2,7 +2,7 @@ name: Staff Tracker Bot
 
 on:
   schedule:
-    - cron: '0 8 * * *'  # Every day at 8h
+    - cron: '0 16 * * *'  # Every day at 8h
   workflow_dispatch:  # Launch manually
 
 jobs:
@@ -30,3 +30,19 @@ jobs:
         ALERT_CHANNEL_ID: ${{ secrets.ALERT_CHANNEL_ID }}
         ROLE_NOTIF_STAFF_ID: ${{ secrets.ROLE_NOTIF_STAFF_ID }}
       run: python bot.py
+
+    - name: Commit staff_snapshot.json if changed
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add staff_snapshot.json
+        git diff --quiet --cached staff_snapshot.json || git commit -m "chore(snapshot): update staff snapshot [skip ci]"
+        git push
+
+    - name: Commit message_id.json if changed
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add message_id.json
+        git diff --quiet --cached message_id.json || git commit -m "chore(message): update staff message ID [skip ci]"
+        git push
