@@ -22,3 +22,6 @@ Thumbs.db
 
 # GitHub Actions cache
 .github/__pycache__/
+
+# Test folder
+tests/
