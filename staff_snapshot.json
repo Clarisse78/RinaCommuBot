@@ -1,37 +1,3 @@
 {
-    "staff": {
-        "Alexdolphinus": "Admin",
-        "Auzrel": "Helper",
-        "Baldtyy": "Admin",
-        "BorNeO_": "Helper",
-        "GENONO84": "Helper",
-        "Galahadtw1": "Helper",
-        "Heppahh17": "CSTAFF",
-        "HipsterQueso": "Helper",
-        "Luka2228": "Helper",
-        "Lyxaeee": "APSTAFF",
-        "Mystter": "Helper",
-        "NightmareOfStone": "APSTAFF",
-        "NinouOggy66": "CSTAFF",
-        "PetitOUurs": "Helper",
-        "Pixi73": "Helper",
-        "Popix_6": "Helper",
-        "PsycoMc": "Helper",
-        "QIles": "Helper",
-        "Shadoower": "Admin",
-        "Shun_753": "Helper",
-        "TantyCrewX": "Helper",
-        "ThePoneyWhite": "Admin",
-        "Wumba_": "CSTAFF",
-        "Ylfgan": "CSTAFF",
-        "ZemNuts": "Helper",
-        "_Broco": "Helper",
-        "_Maximilien_": "CSTAFF",
-        "a_pa_damy_pincom": "APSTAFF",
-        "adrien2431": "Lead.Dev",
-        "azetr": "CSTAFF",
-        "namouretb": "APSTAFF",
-        "shika258": "Fondateur",
-        "xdredstone2": "Admin"
-    }
+    "staff": {}
 }
